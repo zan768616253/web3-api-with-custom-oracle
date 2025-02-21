@@ -1,0 +1,27 @@
+{
+  "name": "hardhat-project",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "deploy:local": "npx hardhat run scripts/deploy.ts --network localhost",
+    "deploy:sepolia": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "start:node": "npx hardhat node",
+    "start:oracle": "npx ts-node backend/oracle.ts"    
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "axios-mock-adapter": "^2.1.0",
+    "hardhat": "^2.22.18",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "express": "^4.21.2"
+  }
+}
