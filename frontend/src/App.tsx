@@ -18,7 +18,8 @@ const contractABI = [
   "function triggerExitReadOnlyMode(string configurationId) public",
 ];
 
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // Replace with your contract's address
+const contractAddress = "0x2aC03F44034857B07eC042C841C44af595164a01";
+
 const API_PREFIX = "/api/v2/"; // Ensure API requests always start with this
 
 const App: React.FC = () => {
