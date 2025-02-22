@@ -165,7 +165,7 @@ const App: React.FC = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center">Smart Contract Interaction with Web3</h1>
+      <h1 className="text-center">StandbyMP Web3 Bridge: Decentralized Disaster Recovery</h1>
       {account ? (
         <div className="alert alert-info">
           <p><strong>Connected Account:</strong> {account}</p>
