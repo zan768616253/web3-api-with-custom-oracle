@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/web3-api-with-custom-oracle/static/css/main.9fe40f7c.css",
-    "main.js": "/web3-api-with-custom-oracle/static/js/main.84ba9519.js",
+    "main.js": "/web3-api-with-custom-oracle/static/js/main.ce279ff8.js",
     "static/js/453.8ab44547.chunk.js": "/web3-api-with-custom-oracle/static/js/453.8ab44547.chunk.js",
     "index.html": "/web3-api-with-custom-oracle/index.html",
     "main.9fe40f7c.css.map": "/web3-api-with-custom-oracle/static/css/main.9fe40f7c.css.map",
-    "main.84ba9519.js.map": "/web3-api-with-custom-oracle/static/js/main.84ba9519.js.map",
+    "main.ce279ff8.js.map": "/web3-api-with-custom-oracle/static/js/main.ce279ff8.js.map",
     "453.8ab44547.chunk.js.map": "/web3-api-with-custom-oracle/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9fe40f7c.css",
-    "static/js/main.84ba9519.js"
+    "static/js/main.ce279ff8.js"
   ]
 }
