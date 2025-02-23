@@ -39,17 +39,25 @@ const App: React.FC = () => {
   // State variable for configurationId in triggerExitReadOnlyMode
   const [restoreConfigurationId, setRestoreConfigurationId] = useState<string>("");
 
+  const [walletConnected, setWalletConnected] = useState<boolean>(false);
+
   useEffect(() => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum);
       setProvider(provider);
-
+  
       provider.send("eth_requestAccounts", []).then(async (accounts: string[]) => {
-        setAccount(accounts[0]);
-
-        const signer = await provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, contractABI, signer);
-        setContract(contract);
+        if (accounts.length > 0) {
+          setAccount(accounts[0]);
+          setWalletConnected(true);
+          
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(contractAddress, contractABI, signer);
+          setContract(contract);
+        }
+      }).catch((error) => {
+        console.error("Wallet connection failed:", error);
+        setWalletConnected(false);
       });
     }
   }, []);
@@ -166,17 +174,37 @@ const App: React.FC = () => {
   return (
     <div className="container mt-5">
       <h1 className="text-center">StandbyMP Web3 Bridge: Decentralized Disaster Recovery</h1>
-      {account ? (
+
+      {!walletConnected && (
+        <div className="alert alert-danger text-center">
+            <strong>Metamask is not connected.</strong> Please connect your wallet to interact with the contract.
+        </div>
+        )}
+
+        {account ? (
         <div className="alert alert-info">
-          <p><strong>Connected Account:</strong> {account}</p>
+            <p><strong>Connected Account:</strong> {account}</p>
         </div>
-      ) : (
+        ) : (
         <div className="text-center">
-          <button className="btn btn-primary" onClick={() => window.ethereum.request({ method: "eth_requestAccounts" })}>
+            <button
+            className="btn btn-primary"
+            onClick={() => {
+                if (window.ethereum) {
+                window.ethereum.request({ method: "eth_requestAccounts" })
+                    .catch((err: any) => {
+                    console.error("Error connecting to MetaMask:", err);
+                    });
+                } else {
+                alert("MetaMask is not installed. Please install MetaMask to use this feature.");
+                }
+            }}
+            >
             Connect Metamask
-          </button>
+            </button>
         </div>
-      )}
+        )}
+
 
       {/* Trigger Start Read-Only Mode */}
       <div className="my-4 p-3 border rounded">
